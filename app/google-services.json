@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "724791195084",
+    "project_id": "tcrsuperapp",
+    "storage_bucket": "tcrsuperapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724791195084:android:20c8ae89c9c6ec2fae5969",
+        "android_client_info": {
+          "package_name": "com.example.tcrsuperapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb1Nz18IhlQaROl7F_k1jRCJ0ySzRpVRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

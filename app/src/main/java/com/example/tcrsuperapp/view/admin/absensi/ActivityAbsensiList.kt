@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
@@ -49,6 +50,7 @@ class ActivityAbsensiList : AppCompatActivity() {
             startActivity(Intent(this@ActivityAbsensiList, ActivityBeranda::class.java))
             finish()
         }
+
         tglList.setOnClickListener {
             setWaktu()
         }
@@ -71,14 +73,51 @@ class ActivityAbsensiList : AppCompatActivity() {
         batalList.setOnClickListener {
             tglList.text = ""
         }
+
+        menungguList.setOnClickListener {
+            val intent = Intent(this@ActivityAbsensiList, ActivityAbsensiList::class.java)
+            intent.putExtra("approval", "Menunggu")
+            startActivity(intent)
+            finish()
+        }
+        setujuList.setOnClickListener {
+            val intent = Intent(this@ActivityAbsensiList, ActivityAbsensiList::class.java)
+            intent.putExtra("approval", "Disetujui")
+            startActivity(intent)
+            finish()
+        }
+        tolakList.setOnClickListener {
+            val intent = Intent(this@ActivityAbsensiList, ActivityAbsensiList::class.java)
+            intent.putExtra("approval", "Ditolak")
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun loadTgl() {
         tglList.text = intent.getStringExtra("tgl").toString()
         if(tglList.text.toString() == "null") {
+            laybarList3.visibility = View.VISIBLE
             tglList.text = ""
-            loadAbsensi()
+
+            if(intent.getStringExtra("approval").toString() == "Menunggu") {
+                loadAbsensi()
+                menungguList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+                setujuList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+                tolakList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            } else if(intent.getStringExtra("approval").toString() == "Disetujui") {
+                loadAbsensi()
+                menungguList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+                setujuList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+                tolakList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            } else {
+                loadAbsensi()
+                menungguList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+                setujuList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+                tolakList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            }
         } else {
+            laybarList3.visibility = View.GONE
             tglList.text = intent.getStringExtra("tgl").toString()
             searchAbsensi()
         }
@@ -98,7 +137,8 @@ class ActivityAbsensiList : AppCompatActivity() {
 
     private fun loadAbsensi() {
         dataArrayList = ArrayList()
-        val fetchData = FetchData(ApiAdmin.ABSENSI)
+        val fetchData = FetchData(ApiAdmin.ABSENSI +
+                "?approval=" + intent.getStringExtra("approval").toString())
         if (fetchData.startFetch()) {
             if (fetchData.onComplete()) {
                 val result = fetchData.result

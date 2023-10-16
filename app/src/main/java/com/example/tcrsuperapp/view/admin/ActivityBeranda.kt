@@ -17,8 +17,11 @@ import com.example.tcrsuperapp.view.ActivityLogin
 import com.example.tcrsuperapp.view.admin.absensi.ActivityAbsensiList
 import com.example.tcrsuperapp.view.admin.monitorsales.ActivityMonitorsales
 import com.example.tcrsuperapp.view.admin.bukuharian.ActivityBukuharian
+import com.example.tcrsuperapp.view.admin.masukan.ActivityMasukan
 import com.example.tcrsuperapp.view.admin.omzet.ActivityOmzet
+import com.example.tcrsuperapp.view.admin.stok.ActivityStok
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
+import kotlinx.android.synthetic.main.admin_activity_absensi_list.tglList
 import kotlinx.android.synthetic.main.admin_activity_beranda.*
 import org.json.JSONObject
 
@@ -37,7 +40,13 @@ class ActivityBeranda : AppCompatActivity() {
         getData()
 
         absenBeranda.setOnClickListener {
-            startActivity(Intent(this@ActivityBeranda, ActivityAbsensiList::class.java))
+            val intent = Intent(this@ActivityBeranda, ActivityAbsensiList::class.java)
+            intent.putExtra("approval", "Menunggu")
+            startActivity(intent)
+            finish()
+        }
+        stokBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityStok::class.java))
             finish()
         }
         harianBeranda.setOnClickListener {
@@ -50,6 +59,10 @@ class ActivityBeranda : AppCompatActivity() {
         }
         omzetBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityOmzet::class.java))
+            finish()
+        }
+        masukanBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityMasukan::class.java))
             finish()
         }
         logoutBeranda.setOnClickListener {

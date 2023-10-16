@@ -3,6 +3,7 @@ package com.example.tcrsuperapp.view.admin.absensi
 import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.androidnetworking.AndroidNetworking
@@ -11,8 +12,6 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.api.ApiAdmin
-import com.example.tcrsuperapp.model.*
-import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
 import kotlinx.android.synthetic.main.admin_activity_absensi_detail.*
@@ -28,18 +27,61 @@ class ActivityAbsensiDetail : AppCompatActivity() {
         setContentView(R.layout.admin_activity_absensi_detail)
 
         alertDialog = AlertDialog.Builder(this)
-        kode = arrayListOf("", "")
+        kode = arrayListOf("", "", "")
         kode[0] = intent.getStringExtra("kode").toString()
-        getData()
+        kode[1] = intent.getStringExtra("approval").toString()
+        getApproval()
 
+        backDetail.setOnClickListener {
+            val intent = Intent(this@ActivityAbsensiDetail, ActivityAbsensiList::class.java)
+            intent.putExtra("approval", kode[1])
+            startActivity(intent)
+            finish()
+        }
         btnSetuju.setOnClickListener {
-            kode[1] = "Disetujui"
-            approvalAbsensi()
+            alertDialog.setMessage("Apakah anda yakin menyetujui absensi ini ?").setCancelable(false)
+                .setNeutralButton("", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {}
+                })
+                .setPositiveButton("YA", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {
+                        kode[2] = "Disetujui"
+                        approvalAbsensi()
+                    }
+                })
+                .setNegativeButton("TIDAK", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {
+                        dialog.cancel()
+                    }
+                }).create().show()
         }
 
         btnTolak.setOnClickListener {
-            kode[1] = "Ditolak"
-            approvalAbsensi()
+            alertDialog.setMessage("Apakah anda yakin menolak absensi ini ?").setCancelable(false)
+                .setNeutralButton("", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {}
+                })
+                .setPositiveButton("YA", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {
+                        kode[2] = "Ditolak"
+                        approvalAbsensi()
+                    }
+                })
+                .setNegativeButton("TIDAK", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {
+                        dialog.cancel()
+                    }
+                }).create().show()
+        }
+    }
+
+    private fun getApproval() {
+        if(kode[1] == "Menunggu") {
+            layDetail.visibility = View.VISIBLE
+            getData()
+        } else {
+            layDetail.visibility = View.GONE
+            getData()
         }
     }
 
@@ -66,12 +108,15 @@ class ActivityAbsensiDetail : AppCompatActivity() {
     private fun approvalAbsensi() {
         AndroidNetworking.post(ApiAdmin.ABSENSI_APPROVAL)
             .addBodyParameter("kode", kode[0])
-            .addBodyParameter("approval", kode[1])
+            .addBodyParameter("approval", kode[2])
             .setPriority(Priority.MEDIUM).build()
             .getAsJSONObject(object : JSONObjectRequestListener {
                 override fun onResponse(response: JSONObject?) {
                     Toast.makeText(applicationContext,response?.getString("status"), Toast.LENGTH_SHORT).show()
                     if(response?.getString("status")?.contains("Data berhasil ditambahkan")!!){
+                        val intent = Intent(this@ActivityAbsensiDetail, ActivityAbsensiList::class.java)
+                        intent.putExtra("approval", kode[1])
+                        startActivity(intent)
                         finish()
                     }
                 }
@@ -82,7 +127,9 @@ class ActivityAbsensiDetail : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@ActivityAbsensiDetail, ActivityAbsensiList::class.java))
+        val intent = Intent(this@ActivityAbsensiDetail, ActivityAbsensiList::class.java)
+        intent.putExtra("approval", kode[1])
+        startActivity(intent)
         finish()
     }
 }

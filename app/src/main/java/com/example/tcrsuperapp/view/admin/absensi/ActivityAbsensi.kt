@@ -61,7 +61,9 @@ class ActivityAbsensi : AppCompatActivity() {
         lokasiSekarang()
 
         backAbsensi.setOnClickListener {
-            startActivity(Intent(this@ActivityAbsensi, ActivityAbsensiList::class.java))
+            val intent = Intent(this@ActivityAbsensi, ActivityAbsensiList::class.java)
+            intent.putExtra("approval", "Menunggu")
+            startActivity(intent)
             finish()
         }
         btnMasuk.setOnClickListener {
@@ -243,7 +245,9 @@ class ActivityAbsensi : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@ActivityAbsensi, ActivityAbsensiList::class.java))
+        val intent = Intent(this@ActivityAbsensi, ActivityAbsensiList::class.java)
+        intent.putExtra("approval", "Menunggu")
+        startActivity(intent)
         finish()
     }
 }

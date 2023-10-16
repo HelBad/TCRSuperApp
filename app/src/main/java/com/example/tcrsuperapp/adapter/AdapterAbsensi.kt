@@ -1,10 +1,12 @@
 package com.example.tcrsuperapp.adapter
 
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.model.Absensi
@@ -28,10 +30,19 @@ class AdapterAbsensi(dataList: ArrayList<Absensi>?): RecyclerView.Adapter<Adapte
         holder.waktuAbsensi.text = dataList[position].tanggal + ", " + dataList[position].waktu +
                 " (" + dataList!![position].status + ")"
         holder.statusAbsensi.text = "Status : " + dataList[position].keterangan + " - " + dataList[position].approval
+
+        when (dataList[position].status) {
+            "Pulang Awal" -> { holder.waktuAbsensi.setTextColor(Color.parseColor("#FFFF6333")) }
+            "Terlambat" -> { holder.waktuAbsensi.setTextColor(Color.parseColor("#FFFF6333")) }
+            else -> { holder.waktuAbsensi.setTextColor(Color.parseColor("#FF239D58")) }
+        }
+
         holder.viewHolder.setOnClickListener { v ->
             val intent = Intent(v.context, ActivityAbsensiDetail::class.java)
             intent.putExtra("kode", dataList[position].kode)
+            intent.putExtra("approval", dataList[position].approval)
             v.context.startActivity(intent)
+            (v.context as AppCompatActivity).finish()
         }
     }
 

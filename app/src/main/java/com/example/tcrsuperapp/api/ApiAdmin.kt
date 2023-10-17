@@ -8,10 +8,13 @@ class ApiAdmin {
         val ABSENSI_APPROVAL = SERVER + "absensi_approval.php"
         val ABSENSI_COUNT = SERVER + "absensi_count.php"
         val ABSENSI_DETAIL = SERVER + "absensi_detail.php"
+        val FBL = SERVER + "fbl.php"
         val MASUKAN_ADD = SERVER + "masukan_add.php"
         val MASUKAN_COUNT = SERVER + "masukan_count.php"
         val OMZET = SERVER + "omzet.php"
         val PENGGUNA = SERVER + "pengguna.php"
         val STOK = SERVER + "stok.php"
+        val SURVEY = SERVER + "survey.php"
+        val SURVEY_SEARCH = SERVER + "survey_search.php"
     }
 }

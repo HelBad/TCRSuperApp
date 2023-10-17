@@ -17,9 +17,11 @@ import com.example.tcrsuperapp.view.ActivityLogin
 import com.example.tcrsuperapp.view.admin.absensi.ActivityAbsensiList
 import com.example.tcrsuperapp.view.admin.monitorsales.ActivityMonitorsales
 import com.example.tcrsuperapp.view.admin.bukuharian.ActivityBukuharian
+import com.example.tcrsuperapp.view.admin.fbl.ActivityFbl
 import com.example.tcrsuperapp.view.admin.masukan.ActivityMasukan
 import com.example.tcrsuperapp.view.admin.omzet.ActivityOmzet
 import com.example.tcrsuperapp.view.admin.stok.ActivityStok
+import com.example.tcrsuperapp.view.admin.survey.ActivitySurveyList
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
 import kotlinx.android.synthetic.main.admin_activity_absensi_list.tglList
 import kotlinx.android.synthetic.main.admin_activity_beranda.*
@@ -53,12 +55,20 @@ class ActivityBeranda : AppCompatActivity() {
             startActivity(Intent(this@ActivityBeranda, ActivityBukuharian::class.java))
             finish()
         }
+        fblBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityFbl::class.java))
+            finish()
+        }
         salesBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityMonitorsales::class.java))
             finish()
         }
         omzetBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityOmzet::class.java))
+            finish()
+        }
+        custBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivitySurveyList::class.java))
             finish()
         }
         masukanBeranda.setOnClickListener {

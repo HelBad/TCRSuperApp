@@ -11,7 +11,7 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/namaOmzet"
+            android:id="@+id/namaCust"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
@@ -22,11 +22,22 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/nominalOmzet"
+            android:id="@+id/alamatCust"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:text="Alamat"
+            android:textColor="@color/colorGrey"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/telpCust"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
-            android:text="Keterangan"
+            android:text="080"
             android:textColor="@color/colorAccent"
             android:textSize="14dp"
             android:textStyle="bold" />

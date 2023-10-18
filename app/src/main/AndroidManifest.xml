@@ -38,6 +38,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".view.admin.galery.ActivityGalery"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.customer.ActivityCustomer"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.survey.ActivitySurveyDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.survey.ActivitySurveyAkhir"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.survey.ActivitySurvey"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.survey.ActivitySurveyCust"
+            android:exported="false" />
+        <activity
             android:name=".view.admin.survey.ActivitySurveyAwal"
             android:exported="false" />
         <activity

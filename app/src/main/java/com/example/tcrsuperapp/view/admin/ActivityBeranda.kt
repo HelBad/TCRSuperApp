@@ -17,7 +17,9 @@ import com.example.tcrsuperapp.view.ActivityLogin
 import com.example.tcrsuperapp.view.admin.absensi.ActivityAbsensiList
 import com.example.tcrsuperapp.view.admin.monitorsales.ActivityMonitorsales
 import com.example.tcrsuperapp.view.admin.bukuharian.ActivityBukuharian
+import com.example.tcrsuperapp.view.admin.customer.ActivityCustomer
 import com.example.tcrsuperapp.view.admin.fbl.ActivityFbl
+import com.example.tcrsuperapp.view.admin.galery.ActivityGalery
 import com.example.tcrsuperapp.view.admin.masukan.ActivityMasukan
 import com.example.tcrsuperapp.view.admin.omzet.ActivityOmzet
 import com.example.tcrsuperapp.view.admin.stok.ActivityStok
@@ -51,6 +53,10 @@ class ActivityBeranda : AppCompatActivity() {
             startActivity(Intent(this@ActivityBeranda, ActivityStok::class.java))
             finish()
         }
+        custBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityCustomer::class.java))
+            finish()
+        }
         harianBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityBukuharian::class.java))
             finish()
@@ -67,8 +73,12 @@ class ActivityBeranda : AppCompatActivity() {
             startActivity(Intent(this@ActivityBeranda, ActivityOmzet::class.java))
             finish()
         }
-        custBeranda.setOnClickListener {
+        surveyBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivitySurveyList::class.java))
+            finish()
+        }
+        galeryBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityGalery::class.java))
             finish()
         }
         masukanBeranda.setOnClickListener {

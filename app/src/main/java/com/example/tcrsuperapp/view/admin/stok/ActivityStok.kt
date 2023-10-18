@@ -141,7 +141,6 @@ class ActivityStok : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         startActivity(Intent(this@ActivityStok, ActivityBeranda::class.java))
         finish()
     }

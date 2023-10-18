@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.model.Survey
+import java.text.DecimalFormat
 
 class AdapterSurvey(dataList: ArrayList<Survey>?): RecyclerView.Adapter<AdapterSurvey.SurveyViewHolder>() {
     private val dataList: ArrayList<Survey>?
@@ -25,7 +26,7 @@ class AdapterSurvey(dataList: ArrayList<Survey>?): RecyclerView.Adapter<AdapterS
     override fun onBindViewHolder(holder: SurveyViewHolder, @SuppressLint("RecyclerView") position: Int) {
         holder.namaSurvey.text = dataList!![position].perusahaan
         holder.produkSurvey.text = "PRODUK : " + dataList[position].survey_4
-        holder.ratingSurvey.text = (dataList[position].total_rate.toString().toFloat() / 3).toString()
+        holder.ratingSurvey.text = String.format("%.1f", (dataList[position].total_rate.toString().toFloat() / 3))
     }
 
     override fun getItemCount(): Int {

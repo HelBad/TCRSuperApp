@@ -77,10 +77,10 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="20dp"
                     android:background="@android:color/white"
-                    android:hint="Masukkan Nama Toko"
-                    android:inputType="textCapCharacters"
-                    android:textColor="@color/colorGrey"
-                    android:textSize="15dp" />
+                    android:hint="Masukkan Customer"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp"
+                    android:editable="false"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -139,7 +139,7 @@
                         android:background="@android:color/white"
                         android:hint="Masukkan Nama PIC"
                         android:inputType="textCapCharacters"
-                        android:textColor="@color/colorGrey"
+                        android:textColor="@android:color/black"
                         android:textSize="15dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

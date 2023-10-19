@@ -19,6 +19,7 @@ class ApiAdmin {
         val SURVEY = SERVER + "survey.php"
         val SURVEY_ADD = SERVER + "survey_add.php"
         val SURVEY_COUNT = SERVER + "survey_count.php"
+        val SURVEY_DETAIL = SERVER + "survey_detail.php"
         val SURVEY_SEARCH = SERVER + "survey_search.php"
     }
 }

@@ -1,12 +1,16 @@
-package com.example.tcrsuperapp.view.admin.absensi
+package com.example.tcrsuperapp.view.staff.absensi
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.*
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.location.*
+import android.location.Address
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
-import android.os.*
+import android.os.Bundle
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Base64
 import android.widget.Toast
@@ -16,23 +20,25 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.tcrsuperapp.R
-import com.example.tcrsuperapp.api.ApiAdmin
+import com.example.tcrsuperapp.api.ApiStaff
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.google.firebase.database.*
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.single.PermissionListener
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
-import kotlinx.android.synthetic.main.admin_activity_absensi.*
+import kotlinx.android.synthetic.main.staff_activity_absensi.*
 import org.json.JSONObject
-import java.io.*
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.ArrayList
+import java.util.Date
+import java.util.HashMap
+import java.util.Locale
 
 class ActivityAbsensi : AppCompatActivity() {
     lateinit var SP: SharedPreferences
@@ -51,7 +57,7 @@ class ActivityAbsensi : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.admin_activity_absensi)
+        setContentView(R.layout.staff_activity_absensi)
 
         alertDialog = AlertDialog.Builder(this)
         SP = getSharedPreferences("Pengguna", Context.MODE_PRIVATE)
@@ -92,33 +98,33 @@ class ActivityAbsensi : AppCompatActivity() {
         }
         btnKeluar.setOnClickListener {
             if(ketAbsensi.text.toString() != "") {
-            Dexter.withContext(applicationContext).withPermission(Manifest.permission.CAMERA)
-                .withListener(object : PermissionListener {
-                    override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse?) {
-                        kode[2] = "Clock Out"
-                        val day = formatDay.format(Date())
-                        if(day.toString() == "Sabtu" || day.toString() == "Saturday") {
-                            if(countTime < 50400) {
-                                kode[3] = "Pulang Awal"
+                Dexter.withContext(applicationContext).withPermission(Manifest.permission.CAMERA)
+                    .withListener(object : PermissionListener {
+                        override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse?) {
+                            kode[2] = "Clock Out"
+                            val day = formatDay.format(Date())
+                            if(day.toString() == "Sabtu" || day.toString() == "Saturday") {
+                                if(countTime < 50400) {
+                                    kode[3] = "Pulang Awal"
+                                } else {
+                                    kode[3] = "Ontime"
+                                }
                             } else {
-                                kode[3] = "Ontime"
+                                if(countTime <= 61200) {
+                                    kode[3] = "Pulang Awal"
+                                } else {
+                                    kode[3] = "Ontime"
+                                }
                             }
-                        } else {
-                            if(countTime <= 61200) {
-                                kode[3] = "Pulang Awal"
-                            } else {
-                                kode[3] = "Ontime"
-                            }
+                            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                            startActivityForResult(intent, 111)
                         }
-                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                        startActivityForResult(intent, 111)
-                    }
-                    override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse?) {}
-                    override fun onPermissionRationaleShouldBeShown(
-                        p0: com.karumi.dexter.listener.PermissionRequest?, permissionToken: PermissionToken?) {
-                        permissionToken!!.continuePermissionRequest()
-                    }
-                }).check()
+                        override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse?) {}
+                        override fun onPermissionRationaleShouldBeShown(
+                            p0: com.karumi.dexter.listener.PermissionRequest?, permissionToken: PermissionToken?) {
+                            permissionToken!!.continuePermissionRequest()
+                        }
+                    }).check()
             } else {
                 Toast.makeText(this@ActivityAbsensi, "Lengkapi data dahulu", Toast.LENGTH_SHORT).show()
             }
@@ -133,7 +139,7 @@ class ActivityAbsensi : AppCompatActivity() {
     }
 
     private fun getData() {
-        val fetchData1 = FetchData(ApiAdmin.ABSENSI_COUNT)
+        val fetchData1 = FetchData(ApiStaff.ABSENSI_COUNT)
         if (fetchData1.startFetch()) {
             if (fetchData1.onComplete()) {
                 val result: String = fetchData1.result
@@ -145,7 +151,7 @@ class ActivityAbsensi : AppCompatActivity() {
             }
         }
 
-        val fetchData2 = FetchData(ApiAdmin.PENGGUNA +
+        val fetchData2 = FetchData(ApiStaff.PENGGUNA +
                 "?kode=" + SP.getString("username", "").toString())
         if (fetchData2.startFetch()) {
             if (fetchData2.onComplete()) {
@@ -221,7 +227,7 @@ class ActivityAbsensi : AppCompatActivity() {
     }
 
     private fun uploadFoto() {
-        val request: StringRequest = object : StringRequest(Method.POST, ApiAdmin.ABSENSI_ADD, Response.Listener {
+        val request: StringRequest = object : StringRequest(Method.POST, ApiStaff.ABSENSI_ADD, Response.Listener {
             Toast.makeText(applicationContext, "Berhasil diupload", Toast.LENGTH_SHORT).show()
         }, Response.ErrorListener { error -> Toast.makeText(applicationContext, error.toString(), Toast.LENGTH_SHORT).show() }) {
             @Throws(AuthFailureError::class)

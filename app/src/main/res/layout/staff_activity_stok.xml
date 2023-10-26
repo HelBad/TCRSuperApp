@@ -6,37 +6,37 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".view.admin.customer.ActivityCustomer">
+    tools:context=".view.staff.stok.ActivityStok">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarCust1"
+        android:id="@+id/toolbarStok1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:visibility="gone">
         <RelativeLayout
-            android:id="@+id/laybarCust11"
+            android:id="@+id/laybarStok11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="15dp"
             android:minHeight="?attr/actionBarSize"
             android:elevation="5dp">
             <LinearLayout
-                android:id="@+id/laybarCust12"
+                android:id="@+id/laybarStok12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:orientation="horizontal">
                 <ImageView
-                    android:id="@+id/batalCust"
+                    android:id="@+id/batalStok"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="5dp"
                     android:src="@drawable/ic_batal"/>
 
                 <ImageView
-                    android:id="@+id/lanjutCust"
+                    android:id="@+id/lanjutStok"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_lanjut"/>
@@ -45,13 +45,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/laybarCust12"
-                android:layout_toRightOf="@+id/backCust1"
+                android:layout_toLeftOf="@+id/laybarStok12"
+                android:layout_toRightOf="@+id/backStok1"
                 android:layout_marginBottom="20dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/dec_border">
                 <EditText
-                    android:id="@+id/namaCust"
+                    android:id="@+id/produkStok"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:layout_centerVertical="true"
@@ -64,7 +64,7 @@
             </RelativeLayout>
 
             <ImageView
-                android:id="@+id/backCust1"
+                android:id="@+id/backStok1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
@@ -74,7 +74,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarCust2"
+        android:id="@+id/toolbarStok2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -84,7 +84,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <ImageView
-                android:id="@+id/backCust2"
+                android:id="@+id/backStok2"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
@@ -92,12 +92,12 @@
                 android:src="@drawable/ic_kembali"/>
 
             <TextView
-                android:id="@+id/laybarCust2"
+                android:id="@+id/laybarStok2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:layout_gravity="center_vertical"
-                android:text="Master Customer"
+                android:text="Stok Produk"
                 android:textSize="20dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"/>
@@ -105,8 +105,8 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCust"
+        android:id="@+id/recyclerStok"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_customer"/>
+        tools:listitem="@layout/list_stok"/>
 </LinearLayout>

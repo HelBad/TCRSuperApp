@@ -1,19 +1,20 @@
 package com.example.tcrsuperapp.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.model.Survey
-import com.example.tcrsuperapp.view.admin.survey.ActivitySurveyDetail
 
 class AdapterSurvey(dataList: ArrayList<Survey>?): RecyclerView.Adapter<AdapterSurvey.SurveyViewHolder>() {
     private val dataList: ArrayList<Survey>?
+    lateinit var SP: SharedPreferences
 
     init {
         this.dataList = dataList
@@ -31,9 +32,23 @@ class AdapterSurvey(dataList: ArrayList<Survey>?): RecyclerView.Adapter<AdapterS
         holder.ratingSurvey.text = String.format("%.1f", (dataList[position].total_rate.toString().toFloat() / 3))
 
         holder.viewHolder.setOnClickListener { v ->
-            val intent = Intent(v.context, ActivitySurveyDetail::class.java)
-            intent.putExtra("kode", dataList[position].kode)
-            v.context.startActivity(intent)
+            SP = v.context.getSharedPreferences("Pengguna", Context.MODE_PRIVATE)
+            if(SP.getString("level", "").toString() == "Admin") {
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.admin.survey.ActivitySurveyDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode)
+                v.context.startActivity(intent)
+            } else if(SP.getString("level", "").toString() == "Staff") {
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.staff.survey.ActivitySurveyDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode)
+                v.context.startActivity(intent)
+            } else {
+//                val intent = Intent(v.context,
+//                    com.example.tcrsuperapp.view.sales.survey.ActivitySurveyDetail::class.java)
+//                intent.putExtra("kode", dataList[position].kode)
+//                v.context.startActivity(intent)
+            }
         }
     }
 

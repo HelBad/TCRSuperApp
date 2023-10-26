@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".view.admin.absensi.ActivityAbsensi">
+    tools:context=".view.staff.absensi.ActivityAbsensi">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarAbsensi"
         android:layout_width="match_parent"

@@ -66,8 +66,9 @@ class ActivityLogin : AppCompatActivity() {
                                         com.example.tcrsuperapp.view.admin.ActivityBeranda::class.java))
                                     finish()
                                 } else if(us.level == "Staff") {
-//                                    startActivity(Intent(this@ActivityLogin, ActivityUtama::class.java))
-//                                    finish()
+                                    startActivity(Intent(this@ActivityLogin,
+                                        com.example.tcrsuperapp.view.staff.ActivityBeranda::class.java))
+                                    finish()
                                 } else {
 //                                    startActivity(Intent(this@ActivityLogin, ActivityArea::class.java))
 //                                    finish()

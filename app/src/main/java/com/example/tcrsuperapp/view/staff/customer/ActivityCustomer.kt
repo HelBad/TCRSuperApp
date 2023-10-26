@@ -1,8 +1,6 @@
-package com.example.tcrsuperapp.view.admin.survey
+package com.example.tcrsuperapp.view.staff.customer
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -12,35 +10,36 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
-import com.example.tcrsuperapp.adapter.AdapterSurveyCust
-import com.example.tcrsuperapp.api.ApiAdmin
+import com.example.tcrsuperapp.adapter.AdapterCust
+import com.example.tcrsuperapp.api.ApiStaff
 import com.example.tcrsuperapp.model.Customer
+import com.example.tcrsuperapp.view.staff.ActivityBeranda
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
-import kotlinx.android.synthetic.main.admin_activity_survey_cust.*
+import kotlinx.android.synthetic.main.staff_activity_customer.*
 import org.json.JSONObject
 
-class ActivitySurveyCust : AppCompatActivity() {
-    lateinit var SP: SharedPreferences
-    lateinit var adapter: AdapterSurveyCust
+class ActivityCustomer : AppCompatActivity() {
+    lateinit var adapter: AdapterCust
     lateinit var dataArrayList: ArrayList<Customer>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.admin_activity_survey_cust)
+        setContentView(R.layout.staff_activity_customer)
 
         (this as AppCompatActivity).setSupportActionBar(toolbarCust2)
-        SP = getSharedPreferences("Survey", Context.MODE_PRIVATE)
         loadPerusahaan()
 
-        adapter = AdapterSurveyCust(dataArrayList)
+        adapter = AdapterCust(dataArrayList)
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerCust.layoutManager = layoutManager
         recyclerCust.adapter = adapter
 
         backCust1.setOnClickListener {
+            startActivity(Intent(this@ActivityCustomer, ActivityBeranda::class.java))
             finish()
         }
         backCust2.setOnClickListener {
+            startActivity(Intent(this@ActivityCustomer, ActivityBeranda::class.java))
             finish()
         }
 
@@ -48,13 +47,13 @@ class ActivitySurveyCust : AppCompatActivity() {
             if(namaCust.text.toString() == "") {
                 toolbarCust2.visibility = View.VISIBLE
                 toolbarCust1.visibility = View.GONE
-                Toast.makeText(this@ActivitySurveyCust, "Pencarian masih kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ActivityCustomer, "Pencarian masih kosong", Toast.LENGTH_SHORT).show()
             } else if(namaCust.text.toString() == intent.getStringExtra("nama").toString()) {
                 toolbarCust2.visibility = View.VISIBLE
                 toolbarCust1.visibility = View.GONE
-                Toast.makeText(this@ActivitySurveyCust, "Pencarian gagal", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ActivityCustomer, "Pencarian gagal", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(this@ActivitySurveyCust, ActivitySurveyCust::class.java)
+                val intent = Intent(this@ActivityCustomer, ActivityCustomer::class.java)
                 intent.putExtra("nama", namaCust.text.toString())
                 startActivity(intent)
                 finish()
@@ -78,7 +77,7 @@ class ActivitySurveyCust : AppCompatActivity() {
 
     private fun loadCust() {
         dataArrayList = ArrayList()
-        val fetchData = FetchData(ApiAdmin.CUSTOMER)
+        val fetchData = FetchData(ApiStaff.CUSTOMER)
         if (fetchData.startFetch()) {
             if (fetchData.onComplete()) {
                 val result = fetchData.result
@@ -102,7 +101,7 @@ class ActivitySurveyCust : AppCompatActivity() {
 
     private fun searchCust() {
         dataArrayList = ArrayList()
-        val fetchData = FetchData(ApiAdmin.CUSTOMER +
+        val fetchData = FetchData(ApiStaff.CUSTOMER +
                 "?perusahaan=" + intent.getStringExtra("nama").toString())
         if (fetchData.startFetch()) {
             if (fetchData.onComplete()) {
@@ -142,6 +141,7 @@ class ActivitySurveyCust : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        startActivity(Intent(this@ActivityCustomer, ActivityBeranda::class.java))
         finish()
     }
 }

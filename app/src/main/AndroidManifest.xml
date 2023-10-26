@@ -38,6 +38,54 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".view.staff.survey.ActivitySurveyDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.survey.ActivitySurveyAkhir"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.survey.ActivitySurvey"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.survey.ActivitySurveyCust"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.survey.ActivitySurveyAwal"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.survey.ActivitySurveyList"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.galery.ActivityGalery"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.masukan.ActivityMasukan"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.fbl.ActivityFbl"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.bukuharian.ActivityBukuharian"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.customer.ActivityCustomer"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.stok.ActivityStok"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.absensi.ActivityAbsensiDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.absensi.ActivityAbsensi"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.absensi.ActivityAbsensiList"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.ActivityBeranda"
+            android:exported="false" />
+        <activity
             android:name=".view.admin.galery.ActivityGalery"
             android:exported="false" />
         <activity
@@ -72,9 +120,6 @@
             android:exported="false" />
         <activity
             android:name=".view.admin.absensi.ActivityAbsensiDetail"
-            android:exported="false" />
-        <activity
-            android:name=".view.admin.absensi.ActivityAbsensi"
             android:exported="false" />
         <activity
             android:name=".view.admin.absensi.ActivityAbsensiList"

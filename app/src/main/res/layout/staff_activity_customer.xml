@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".view.admin.customer.ActivityCustomer">
+    tools:context=".view.staff.customer.ActivityCustomer">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCust1"
         android:layout_width="match_parent"

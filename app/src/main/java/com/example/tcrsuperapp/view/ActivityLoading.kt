@@ -29,8 +29,9 @@ class ActivityLoading : AppCompatActivity() {
                             com.example.tcrsuperapp.view.admin.ActivityBeranda::class.java))
                         finish()
                     } else if(SP.getString("level", "") == "Staff") {
-//                        startActivity(Intent(applicationContext, ActivityBeranda::class.java))
-//                        finish()
+                        startActivity(Intent(applicationContext,
+                            com.example.tcrsuperapp.view.staff.ActivityBeranda::class.java))
+                        finish()
                     } else if(SP.getString("level", "") == "Salesman") {
 //                        startActivity(Intent(applicationContext, ActivityBeranda::class.java))
 //                        finish()

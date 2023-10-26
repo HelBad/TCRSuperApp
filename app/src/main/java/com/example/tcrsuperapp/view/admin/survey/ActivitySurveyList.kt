@@ -54,7 +54,7 @@ class ActivitySurveyList : AppCompatActivity() {
             }
         }
 
-        spinnerList.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, survey.distinct())
+        spinnerList.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, survey)
         spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

@@ -1,22 +1,17 @@
 package com.example.tcrsuperapp.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.model.Customer
-import com.example.tcrsuperapp.view.admin.survey.ActivitySurveyAwal
 
 class AdapterCust(dataList: ArrayList<Customer>?): RecyclerView.Adapter<AdapterCust.CustViewHolder>() {
     private val dataList: ArrayList<Customer>?
-    lateinit var SP: SharedPreferences
 
     init {
         this.dataList = dataList
@@ -36,17 +31,6 @@ class AdapterCust(dataList: ArrayList<Customer>?): RecyclerView.Adapter<AdapterC
         } else {
             holder.telpCust.text = dataList[position].telp
         }
-
-        holder.viewHolder.setOnClickListener { v ->
-            SP = v.context.getSharedPreferences("Survey", Context.MODE_PRIVATE)
-            val intent = Intent(v.context, ActivitySurveyAwal::class.java)
-            val editor = SP.edit()
-            editor.putString("kode", dataList[position].kode)
-            editor.putString("perusahaan", dataList[position].perusahaan)
-            editor.apply()
-            v.context.startActivity(intent)
-            (v.context as AppCompatActivity).finish()
-        }
     }
 
     override fun getItemCount(): Int {
@@ -57,13 +41,11 @@ class AdapterCust(dataList: ArrayList<Customer>?): RecyclerView.Adapter<AdapterC
         val namaCust: TextView
         val alamatCust: TextView
         val telpCust: TextView
-        val viewHolder: View
 
         init {
             namaCust = itemView.findViewById<View>(R.id.namaCust) as TextView
             alamatCust = itemView.findViewById<View>(R.id.alamatCust) as TextView
             telpCust = itemView.findViewById<View>(R.id.telpCust) as TextView
-            viewHolder = itemView
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.tcrsuperapp.view.admin.survey
+package com.example.tcrsuperapp.view.staff.survey
 
 import android.content.Context
 import android.content.Intent
@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.adapter.AdapterSurveyCust
-import com.example.tcrsuperapp.api.ApiAdmin
+import com.example.tcrsuperapp.api.ApiStaff
 import com.example.tcrsuperapp.model.Customer
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
-import kotlinx.android.synthetic.main.admin_activity_survey_cust.*
+import kotlinx.android.synthetic.main.staff_activity_survey_cust.*
 import org.json.JSONObject
 
 class ActivitySurveyCust : AppCompatActivity() {
@@ -26,7 +26,7 @@ class ActivitySurveyCust : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.admin_activity_survey_cust)
+        setContentView(R.layout.staff_activity_survey_cust)
 
         (this as AppCompatActivity).setSupportActionBar(toolbarCust2)
         SP = getSharedPreferences("Survey", Context.MODE_PRIVATE)
@@ -78,7 +78,7 @@ class ActivitySurveyCust : AppCompatActivity() {
 
     private fun loadCust() {
         dataArrayList = ArrayList()
-        val fetchData = FetchData(ApiAdmin.CUSTOMER)
+        val fetchData = FetchData(ApiStaff.CUSTOMER)
         if (fetchData.startFetch()) {
             if (fetchData.onComplete()) {
                 val result = fetchData.result
@@ -102,7 +102,7 @@ class ActivitySurveyCust : AppCompatActivity() {
 
     private fun searchCust() {
         dataArrayList = ArrayList()
-        val fetchData = FetchData(ApiAdmin.CUSTOMER +
+        val fetchData = FetchData(ApiStaff.CUSTOMER +
                 "?perusahaan=" + intent.getStringExtra("nama").toString())
         if (fetchData.startFetch()) {
             if (fetchData.onComplete()) {

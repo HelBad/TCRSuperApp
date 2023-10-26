@@ -1,4 +1,4 @@
-package com.example.tcrsuperapp.view.admin.masukan
+package com.example.tcrsuperapp.view.staff.masukan
 
 import android.content.Context
 import android.content.DialogInterface
@@ -13,10 +13,10 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.tcrsuperapp.R
-import com.example.tcrsuperapp.api.ApiAdmin
-import com.example.tcrsuperapp.view.admin.ActivityBeranda
+import com.example.tcrsuperapp.api.ApiStaff
+import com.example.tcrsuperapp.view.staff.ActivityBeranda
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
-import kotlinx.android.synthetic.main.admin_activity_masukan.*
+import kotlinx.android.synthetic.main.staff_activity_masukan.*
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.ArrayList
@@ -30,7 +30,7 @@ class ActivityMasukan : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.admin_activity_masukan)
+        setContentView(R.layout.staff_activity_masukan)
 
         alertDialog = AlertDialog.Builder(this)
         SP = getSharedPreferences("Pengguna", Context.MODE_PRIVATE)
@@ -60,7 +60,7 @@ class ActivityMasukan : AppCompatActivity() {
     }
 
     private fun getData() {
-        val fetchData1 = FetchData(ApiAdmin.MASUKAN_COUNT)
+        val fetchData1 = FetchData(ApiStaff.MASUKAN_COUNT)
         if (fetchData1.startFetch()) {
             if (fetchData1.onComplete()) {
                 val result: String = fetchData1.result
@@ -72,7 +72,7 @@ class ActivityMasukan : AppCompatActivity() {
             }
         }
 
-        val fetchData2 = FetchData(ApiAdmin.PENGGUNA +
+        val fetchData2 = FetchData(ApiStaff.PENGGUNA +
                 "?kode=" + SP.getString("username", "").toString())
         if (fetchData2.startFetch()) {
             if (fetchData2.onComplete()) {
@@ -91,7 +91,7 @@ class ActivityMasukan : AppCompatActivity() {
     }
 
     private fun simpanMasukan() {
-        AndroidNetworking.post(ApiAdmin.MASUKAN_ADD)
+        AndroidNetworking.post(ApiStaff.MASUKAN_ADD)
             .addBodyParameter("kode", kode[1])
             .addBodyParameter("keterangan", ketMasukan.text.toString())
             .setPriority(Priority.MEDIUM).build()

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".view.admin.customer.ActivityCustomer">
+    tools:context=".view.staff.survey.ActivitySurveyCust">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCust1"
         android:layout_width="match_parent"
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:layout_gravity="center_vertical"
-                android:text="Master Customer"
+                android:text="Customer"
                 android:textSize="20dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"/>

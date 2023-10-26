@@ -1,6 +1,8 @@
 package com.example.tcrsuperapp.adapter
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.model.Absensi
-import com.example.tcrsuperapp.view.admin.absensi.ActivityAbsensiDetail
 
 class AdapterAbsensi(dataList: ArrayList<Absensi>?): RecyclerView.Adapter<AdapterAbsensi.AbsensiViewHolder>() {
     private val dataList: ArrayList<Absensi>?
+    lateinit var SP: SharedPreferences
 
     init {
         this.dataList = dataList
@@ -38,11 +40,29 @@ class AdapterAbsensi(dataList: ArrayList<Absensi>?): RecyclerView.Adapter<Adapte
         }
 
         holder.viewHolder.setOnClickListener { v ->
-            val intent = Intent(v.context, ActivityAbsensiDetail::class.java)
-            intent.putExtra("kode", dataList[position].kode)
-            intent.putExtra("approval", dataList[position].approval)
-            v.context.startActivity(intent)
-            (v.context as AppCompatActivity).finish()
+            SP = v.context.getSharedPreferences("Pengguna", Context.MODE_PRIVATE)
+            if(SP.getString("level", "").toString() == "Admin") {
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.admin.absensi.ActivityAbsensiDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode)
+                intent.putExtra("approval", dataList[position].approval)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
+            } else if(SP.getString("level", "").toString() == "Staff") {
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.staff.absensi.ActivityAbsensiDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode)
+                intent.putExtra("approval", dataList[position].approval)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
+            } else {
+//                val intent = Intent(v.context,
+//                    com.example.tcrsuperapp.view.sales.absensi.ActivityAbsensiDetail::class.java)
+//                intent.putExtra("kode", dataList[position].kode)
+//                intent.putExtra("approval", dataList[position].approval)
+//                v.context.startActivity(intent)
+//                (v.context as AppCompatActivity).finish()
+            }
         }
     }
 

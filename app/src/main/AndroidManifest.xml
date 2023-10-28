@@ -38,6 +38,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".view.sales.ActivityBeranda"
+            android:exported="false" />
+        <activity
             android:name=".view.staff.survey.ActivitySurveyDetail"
             android:exported="false" />
         <activity

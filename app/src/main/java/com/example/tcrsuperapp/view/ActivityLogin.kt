@@ -70,8 +70,9 @@ class ActivityLogin : AppCompatActivity() {
                                         com.example.tcrsuperapp.view.staff.ActivityBeranda::class.java))
                                     finish()
                                 } else {
-//                                    startActivity(Intent(this@ActivityLogin, ActivityArea::class.java))
-//                                    finish()
+                                    startActivity(Intent(this@ActivityLogin,
+                                        com.example.tcrsuperapp.view.sales.ActivityBeranda::class.java))
+                                    finish()
                                 }
                             } else {
                                 Toast.makeText(this@ActivityLogin, "Password salah", Toast.LENGTH_SHORT).show()

@@ -49,7 +49,7 @@ class AdapterSurveyCust(dataList: ArrayList<Customer>?): RecyclerView.Adapter<Ad
                 editor.apply()
                 v.context.startActivity(intent)
                 (v.context as AppCompatActivity).finish()
-            } else if(SP1.getString("level", "").toString() == "Staff") {
+            } else if(SP.getString("level", "").toString() == "Staff") {
                 val intent = Intent(v.context,
                     com.example.tcrsuperapp.view.staff.survey.ActivitySurveyAwal::class.java)
                 val editor = SP1.edit()
@@ -59,14 +59,14 @@ class AdapterSurveyCust(dataList: ArrayList<Customer>?): RecyclerView.Adapter<Ad
                 v.context.startActivity(intent)
                 (v.context as AppCompatActivity).finish()
             } else {
-//                val intent = Intent(v.context,
-//                    com.example.tcrsuperapp.view.sales.survey.ActivitySurveyAwal::class.java)
-//                val editor = SP.edit()
-//                editor.putString("kode", dataList[position].kode)
-//                editor.putString("perusahaan", dataList[position].perusahaan)
-//                editor.apply()
-//                v.context.startActivity(intent)
-//                (v.context as AppCompatActivity).finish()
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.sales.survey.ActivitySurveyAwal::class.java)
+                val editor = SP1.edit()
+                editor.putString("kode", dataList[position].kode)
+                editor.putString("perusahaan", dataList[position].perusahaan)
+                editor.apply()
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
             }
         }
     }

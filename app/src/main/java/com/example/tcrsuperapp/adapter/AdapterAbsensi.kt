@@ -56,12 +56,12 @@ class AdapterAbsensi(dataList: ArrayList<Absensi>?): RecyclerView.Adapter<Adapte
                 v.context.startActivity(intent)
                 (v.context as AppCompatActivity).finish()
             } else {
-//                val intent = Intent(v.context,
-//                    com.example.tcrsuperapp.view.sales.absensi.ActivityAbsensiDetail::class.java)
-//                intent.putExtra("kode", dataList[position].kode)
-//                intent.putExtra("approval", dataList[position].approval)
-//                v.context.startActivity(intent)
-//                (v.context as AppCompatActivity).finish()
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.sales.absensi.ActivityAbsensiDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode)
+                intent.putExtra("approval", dataList[position].approval)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
             }
         }
     }

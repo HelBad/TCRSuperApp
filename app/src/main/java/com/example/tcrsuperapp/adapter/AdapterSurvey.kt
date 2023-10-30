@@ -44,10 +44,10 @@ class AdapterSurvey(dataList: ArrayList<Survey>?): RecyclerView.Adapter<AdapterS
                 intent.putExtra("kode", dataList[position].kode)
                 v.context.startActivity(intent)
             } else {
-//                val intent = Intent(v.context,
-//                    com.example.tcrsuperapp.view.sales.survey.ActivitySurveyDetail::class.java)
-//                intent.putExtra("kode", dataList[position].kode)
-//                v.context.startActivity(intent)
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.sales.survey.ActivitySurveyDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode)
+                v.context.startActivity(intent)
             }
         }
     }

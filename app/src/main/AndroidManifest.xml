@@ -29,7 +29,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:hardwareAccelerated="true"
         android:icon="@drawable/img_logo"
-        android:label="TCR Super App"
+        android:label="TCR SuperApp"
         android:largeHeap="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@drawable/img_logo"
@@ -37,6 +37,60 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <activity
+            android:name=".view.staff.sp.ActivitySp"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.sp.ActivitySpDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.sp.ActivitySpList"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.survey.ActivitySurveyDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.survey.ActivitySurveyAkhir"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.survey.ActivitySurvey"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.survey.ActivitySurveyCust"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.survey.ActivitySurveyAwal"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.survey.ActivitySurveyList"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.absensi.ActivityAbsensiDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.absensi.ActivityAbsensi"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.absensi.ActivityAbsensiList"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.omzet.ActivityOmzet"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.customer.ActivityCustomer"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.stok.ActivityStok"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.fbl.ActivityFbl"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.galery.ActivityGalery"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.masukan.ActivityMasukan"
+            android:exported="false" />
         <activity
             android:name=".view.sales.ActivityBeranda"
             android:exported="false" />

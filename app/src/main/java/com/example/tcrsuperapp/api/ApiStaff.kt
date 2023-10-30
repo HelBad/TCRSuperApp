@@ -13,6 +13,7 @@ class ApiStaff {
         val MASUKAN_ADD = SERVER + "masukan_add.php"
         val MASUKAN_COUNT = SERVER + "masukan_count.php"
         val PENGGUNA = SERVER + "pengguna.php"
+        val SP = SERVER + "sp.php"
         val STOK = SERVER + "stok.php"
         val SURVEY = SERVER + "survey.php"
         val SURVEY_ADD = SERVER + "survey_add.php"

@@ -14,6 +14,14 @@ import androidx.core.content.ContextCompat
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.api.ApiSales
 import com.example.tcrsuperapp.view.ActivityLogin
+import com.example.tcrsuperapp.view.sales.absensi.ActivityAbsensiList
+import com.example.tcrsuperapp.view.sales.customer.ActivityCustomer
+import com.example.tcrsuperapp.view.sales.fbl.ActivityFbl
+import com.example.tcrsuperapp.view.sales.galery.ActivityGalery
+import com.example.tcrsuperapp.view.sales.masukan.ActivityMasukan
+import com.example.tcrsuperapp.view.sales.omzet.ActivityOmzet
+import com.example.tcrsuperapp.view.sales.stok.ActivityStok
+import com.example.tcrsuperapp.view.sales.survey.ActivitySurveyList
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
 import kotlinx.android.synthetic.main.sales_activity_beranda.*
 import org.json.JSONObject
@@ -33,38 +41,38 @@ class ActivityBeranda : AppCompatActivity() {
         getData()
 
         absenBeranda.setOnClickListener {
-//            val intent = Intent(this@ActivityBeranda, ActivityAbsensiList::class.java)
-//            intent.putExtra("approval", "Menunggu")
-//            startActivity(intent)
-//            finish()
+            val intent = Intent(this@ActivityBeranda, ActivityAbsensiList::class.java)
+            intent.putExtra("approval", "Menunggu")
+            startActivity(intent)
+            finish()
         }
         stokBeranda.setOnClickListener {
-//            startActivity(Intent(this@ActivityBeranda, ActivityStok::class.java))
-//            finish()
+            startActivity(Intent(this@ActivityBeranda, ActivityStok::class.java))
+            finish()
         }
         custBeranda.setOnClickListener {
-//            startActivity(Intent(this@ActivityBeranda, ActivityCustomer::class.java))
-//            finish()
+            startActivity(Intent(this@ActivityBeranda, ActivityCustomer::class.java))
+            finish()
         }
         fblBeranda.setOnClickListener {
-//            startActivity(Intent(this@ActivityBeranda, ActivityFbl::class.java))
-//            finish()
+            startActivity(Intent(this@ActivityBeranda, ActivityFbl::class.java))
+            finish()
         }
         omzetBeranda.setOnClickListener {
-//            startActivity(Intent(this@ActivityBeranda, ActivityOmzet::class.java))
-//            finish()
+            startActivity(Intent(this@ActivityBeranda, ActivityOmzet::class.java))
+            finish()
         }
         surveyBeranda.setOnClickListener {
-//            startActivity(Intent(this@ActivityBeranda, ActivitySurveyList::class.java))
-//            finish()
+            startActivity(Intent(this@ActivityBeranda, ActivitySurveyList::class.java))
+            finish()
         }
         galeryBeranda.setOnClickListener {
-//            startActivity(Intent(this@ActivityBeranda, ActivityGalery::class.java))
-//            finish()
+            startActivity(Intent(this@ActivityBeranda, ActivityGalery::class.java))
+            finish()
         }
         masukanBeranda.setOnClickListener {
-//            startActivity(Intent(this@ActivityBeranda, ActivityMasukan::class.java))
-//            finish()
+            startActivity(Intent(this@ActivityBeranda, ActivityMasukan::class.java))
+            finish()
         }
         logoutBeranda.setOnClickListener {
             alertDialog.setTitle("Keluar Akun")

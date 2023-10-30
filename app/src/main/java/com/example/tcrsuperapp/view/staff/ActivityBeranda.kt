@@ -20,6 +20,7 @@ import com.example.tcrsuperapp.view.staff.customer.ActivityCustomer
 import com.example.tcrsuperapp.view.staff.fbl.ActivityFbl
 import com.example.tcrsuperapp.view.staff.galery.ActivityGalery
 import com.example.tcrsuperapp.view.staff.masukan.ActivityMasukan
+import com.example.tcrsuperapp.view.staff.sp.ActivitySpList
 import com.example.tcrsuperapp.view.staff.stok.ActivityStok
 import com.example.tcrsuperapp.view.staff.survey.ActivitySurveyList
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
@@ -58,6 +59,10 @@ class ActivityBeranda : AppCompatActivity() {
         }
         harianBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityBukuharian::class.java))
+            finish()
+        }
+        spBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivitySpList::class.java))
             finish()
         }
         fblBeranda.setOnClickListener {

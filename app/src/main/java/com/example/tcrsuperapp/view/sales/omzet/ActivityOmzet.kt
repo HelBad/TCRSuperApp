@@ -1,4 +1,4 @@
-package com.example.tcrsuperapp.view.admin.omzet
+package com.example.tcrsuperapp.view.sales.omzet
 
 import android.content.Context
 import android.content.Intent
@@ -9,13 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.adapter.AdapterOmzet
-import com.example.tcrsuperapp.api.ApiAdmin
+import com.example.tcrsuperapp.api.ApiSales
 import com.example.tcrsuperapp.model.Omzet
-import com.example.tcrsuperapp.view.admin.ActivityBeranda
+import com.example.tcrsuperapp.view.sales.ActivityBeranda
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
-import kotlinx.android.synthetic.main.admin_activity_omzet.*
-import kotlinx.android.synthetic.main.sales_activity_beranda.idBeranda
-import kotlinx.android.synthetic.main.sales_activity_beranda.namaBeranda
+import kotlinx.android.synthetic.main.sales_activity_omzet.*
 import org.json.JSONObject
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -28,7 +26,7 @@ class ActivityOmzet : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.admin_activity_omzet)
+        setContentView(R.layout.sales_activity_omzet)
 
         SP = applicationContext.getSharedPreferences("Pengguna", Context.MODE_PRIVATE)
         loadOmzet()
@@ -46,7 +44,7 @@ class ActivityOmzet : AppCompatActivity() {
 
     private fun loadOmzet() {
         dataArrayList = ArrayList()
-        val fetchData1 = FetchData(ApiAdmin.OMZET)
+        val fetchData1 = FetchData(ApiSales.OMZET)
         if (fetchData1.startFetch()) {
             if (fetchData1.onComplete()) {
                 val result = fetchData1.result
@@ -65,7 +63,7 @@ class ActivityOmzet : AppCompatActivity() {
             }
         }
 
-        val fetchData2 = FetchData(ApiAdmin.OMZET_TOTAL)
+        val fetchData2 = FetchData(ApiSales.OMZET_TOTAL)
         if (fetchData2.startFetch()) {
             if (fetchData2.onComplete()) {
                 val result: String = fetchData2.result

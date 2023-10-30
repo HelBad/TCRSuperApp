@@ -14,6 +14,7 @@ class ApiAdmin {
         val MASUKAN_ADD = SERVER + "masukan_add.php"
         val MASUKAN_COUNT = SERVER + "masukan_count.php"
         val OMZET = SERVER + "omzet.php"
+        val OMZET_TOTAL = SERVER + "omzet_total.php"
         val PENGGUNA = SERVER + "pengguna.php"
         val STOK = SERVER + "stok.php"
         val SURVEY = SERVER + "survey.php"

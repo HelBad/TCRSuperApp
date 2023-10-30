@@ -1,4 +1,4 @@
-package com.example.tcrsuperapp.view.staff.survey
+package com.example.tcrsuperapp.view.sales.survey
 
 import android.content.Context
 import android.content.DialogInterface
@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.tcrsuperapp.R
-import kotlinx.android.synthetic.main.staff_activity_survey_awal.*
+import kotlinx.android.synthetic.main.sales_activity_survey_awal.*
 
 class ActivitySurveyAwal : AppCompatActivity() {
     lateinit var alertDialog: AlertDialog.Builder
@@ -17,7 +17,7 @@ class ActivitySurveyAwal : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.staff_activity_survey_awal)
+        setContentView(R.layout.sales_activity_survey_awal)
 
         alertDialog = AlertDialog.Builder(this)
         SP = getSharedPreferences("Survey", Context.MODE_PRIVATE)

@@ -24,8 +24,8 @@ import com.example.tcrsuperapp.view.admin.masukan.ActivityMasukan
 import com.example.tcrsuperapp.view.admin.omzet.ActivityOmzet
 import com.example.tcrsuperapp.view.admin.stok.ActivityStok
 import com.example.tcrsuperapp.view.admin.survey.ActivitySurveyList
+import com.example.tcrsuperapp.view.admin.sp.ActivitySpList
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
-import kotlinx.android.synthetic.main.admin_activity_absensi_list.tglList
 import kotlinx.android.synthetic.main.admin_activity_beranda.*
 import org.json.JSONObject
 
@@ -59,6 +59,10 @@ class ActivityBeranda : AppCompatActivity() {
         }
         harianBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityBukuharian::class.java))
+            finish()
+        }
+        spBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivitySpList::class.java))
             finish()
         }
         fblBeranda.setOnClickListener {

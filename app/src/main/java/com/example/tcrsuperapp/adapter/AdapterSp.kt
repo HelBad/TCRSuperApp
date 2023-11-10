@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.model.Sp
@@ -38,13 +39,19 @@ class AdapterSp(dataList: ArrayList<Sp>?): RecyclerView.Adapter<AdapterSp.SpView
         holder.viewHolder.setOnClickListener { v ->
             SP = v.context.getSharedPreferences("Pengguna", Context.MODE_PRIVATE)
             if(SP.getString("level", "").toString() == "Admin") {
-
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.admin.sp.ActivitySpDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode_nota)
+                intent.putExtra("status", dataList[position].status)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
             } else if(SP.getString("level", "").toString() == "Staff") {
-//                val intent = Intent(v.context,
-//                    com.example.tcrsuperapp.view.staff.sp.ActivitySpDetail::class.java)
-//                intent.putExtra("kode", dataList[position].kode_nota)
-//                intent.putExtra("status", dataList[position].status)
-//                v.context.startActivity(intent)
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.staff.sp.ActivitySpDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode_nota)
+                intent.putExtra("status", dataList[position].status)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
             } else {
 
             }

@@ -53,7 +53,12 @@ class AdapterSp(dataList: ArrayList<Sp>?): RecyclerView.Adapter<AdapterSp.SpView
                 v.context.startActivity(intent)
                 (v.context as AppCompatActivity).finish()
             } else {
-
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.sales.sp.ActivitySpDetail::class.java)
+                intent.putExtra("kode", dataList[position].kode_nota)
+                intent.putExtra("status", dataList[position].status)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
             }
         }
     }

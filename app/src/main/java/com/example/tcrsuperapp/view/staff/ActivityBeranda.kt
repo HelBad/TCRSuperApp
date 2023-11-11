@@ -20,6 +20,7 @@ import com.example.tcrsuperapp.view.staff.customer.ActivityCustomer
 import com.example.tcrsuperapp.view.staff.fbl.ActivityFbl
 import com.example.tcrsuperapp.view.staff.galery.ActivityGalery
 import com.example.tcrsuperapp.view.staff.masukan.ActivityMasukan
+import com.example.tcrsuperapp.view.staff.retur.ActivityReturList
 import com.example.tcrsuperapp.view.staff.sp.ActivitySpList
 import com.example.tcrsuperapp.view.staff.stok.ActivityStok
 import com.example.tcrsuperapp.view.staff.survey.ActivitySurveyList
@@ -67,6 +68,10 @@ class ActivityBeranda : AppCompatActivity() {
         }
         fblBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityFbl::class.java))
+            finish()
+        }
+        returBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityReturList::class.java))
             finish()
         }
         surveyBeranda.setOnClickListener {

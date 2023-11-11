@@ -38,6 +38,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".view.staff.retur.ActivityReturCust"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.retur.ActivityRetur"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.retur.ActivityReturList"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.sp.ActivitySpDetail"
+            android:exported="false" />
+        <activity
             android:name=".view.sales.sp.ActivitySpList"
             android:exported="false" />
         <activity

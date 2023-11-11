@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.api.ApiSales
 import com.example.tcrsuperapp.view.ActivityLogin
+import com.example.tcrsuperapp.view.sales.sp.ActivitySpList
 import com.example.tcrsuperapp.view.sales.absensi.ActivityAbsensiList
 import com.example.tcrsuperapp.view.sales.customer.ActivityCustomer
 import com.example.tcrsuperapp.view.sales.fbl.ActivityFbl
@@ -23,6 +24,7 @@ import com.example.tcrsuperapp.view.sales.omzet.ActivityOmzet
 import com.example.tcrsuperapp.view.sales.stok.ActivityStok
 import com.example.tcrsuperapp.view.sales.survey.ActivitySurveyList
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
+import kotlinx.android.synthetic.main.admin_activity_beranda.spBeranda
 import kotlinx.android.synthetic.main.sales_activity_beranda.*
 import org.json.JSONObject
 
@@ -52,6 +54,10 @@ class ActivityBeranda : AppCompatActivity() {
         }
         custBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityCustomer::class.java))
+            finish()
+        }
+        spBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivitySpList::class.java))
             finish()
         }
         fblBeranda.setOnClickListener {

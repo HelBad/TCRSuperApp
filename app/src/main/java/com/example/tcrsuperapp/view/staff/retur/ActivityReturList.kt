@@ -1,4 +1,4 @@
-package com.example.tcrsuperapp.view.sales.sp
+package com.example.tcrsuperapp.view.staff.retur
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,37 +10,39 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
-import com.example.tcrsuperapp.adapter.AdapterSp
-import com.example.tcrsuperapp.api.ApiSales
-import com.example.tcrsuperapp.model.Sp
-import com.example.tcrsuperapp.view.sales.ActivityBeranda
-import com.example.tcrsuperapp.view.sales.sp.ActivitySpList
+import com.example.tcrsuperapp.adapter.AdapterRetur
+import com.example.tcrsuperapp.api.ApiStaff
+import com.example.tcrsuperapp.model.Retur
+import com.example.tcrsuperapp.view.staff.ActivityBeranda
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
-import kotlinx.android.synthetic.main.sales_activity_sp_list.*
+import kotlinx.android.synthetic.main.staff_activity_retur_list.*
 import org.json.JSONObject
 import java.util.ArrayList
 
-class ActivitySpList : AppCompatActivity() {
-    lateinit var adapter: AdapterSp
-    lateinit var dataArrayList: ArrayList<Sp>
-    var sp: ArrayList<String> = arrayListOf()
+class ActivityReturList : AppCompatActivity() {
+    lateinit var adapter: AdapterRetur
+    lateinit var dataArrayList: ArrayList<Retur>
+    var retur: ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sales_activity_sp_list)
+        setContentView(R.layout.staff_activity_retur_list)
 
         pilihStatus()
 
         backList1.setOnClickListener {
-            startActivity(Intent(this@ActivitySpList, ActivityBeranda::class.java))
+            startActivity(Intent(this@ActivityReturList, ActivityBeranda::class.java))
             finish()
         }
         backList2.setOnClickListener {
-            startActivity(Intent(this@ActivitySpList, ActivityBeranda::class.java))
+            startActivity(Intent(this@ActivityReturList, ActivityBeranda::class.java))
             finish()
         }
 
-
+        tambahList.setOnClickListener {
+            startActivity(Intent(this@ActivityReturList, ActivityRetur::class.java))
+            finish()
+        }
         cariList.setOnClickListener {
             toolbarList2.visibility = View.GONE
             toolbarList1.visibility = View.VISIBLE
@@ -50,13 +52,13 @@ class ActivitySpList : AppCompatActivity() {
             if(namaList.text.toString() == "") {
                 toolbarList2.visibility = View.VISIBLE
                 toolbarList1.visibility = View.GONE
-                Toast.makeText(this@ActivitySpList, "Pencarian masih kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ActivityReturList, "Pencarian masih kosong", Toast.LENGTH_SHORT).show()
             } else if(namaList.text.toString() == intent.getStringExtra("nama").toString()) {
                 toolbarList2.visibility = View.VISIBLE
                 toolbarList1.visibility = View.GONE
-                Toast.makeText(this@ActivitySpList, "Pencarian gagal", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ActivityReturList, "Pencarian gagal", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(this@ActivitySpList, ActivitySpList::class.java)
+                val intent = Intent(this@ActivityReturList, ActivityReturList::class.java)
                 intent.putExtra("nama", namaList.text.toString())
                 startActivity(intent)
                 finish()
@@ -68,18 +70,17 @@ class ActivitySpList : AppCompatActivity() {
     }
 
     private fun pilihStatus() {
-        sp.add("DIPROSES")
-        sp.add("SUDAH DIKIRIM")
-        sp.add("SELESAI")
-        sp.add("DIBATALKAN")
-        spinnerList.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, sp)
+        retur.add("DIPROSES")
+        retur.add("SELESAI")
+        retur.add("DIBATALKAN")
+        spinnerList.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, retur)
         spinnerList.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                statusList.text = sp[position]
+                statusList.text = retur[position]
                 loadData()
 
-                adapter = AdapterSp(dataArrayList)
+                adapter = AdapterRetur(dataArrayList)
                 val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(applicationContext)
                 recyclerList.layoutManager = layoutManager
                 recyclerList.adapter = adapter
@@ -91,18 +92,18 @@ class ActivitySpList : AppCompatActivity() {
         namaList.setText(intent.getStringExtra("nama").toString())
         if(namaList.text.toString() == "null") {
             namaList.setText("")
-            loadSp()
+            loadRetur()
         } else {
             namaList.setText(intent.getStringExtra("nama").toString())
             toolbarList2.visibility = View.GONE
             toolbarList1.visibility = View.VISIBLE
-            searchSp()
+            searchRetur()
         }
     }
 
-    private fun loadSp() {
+    private fun loadRetur() {
         dataArrayList = ArrayList()
-        val fetchData = FetchData(ApiSales.SP + "?status=" + statusList.text.toString())
+        val fetchData = FetchData(ApiStaff.RETUR + "?status=" + statusList.text.toString())
         if (fetchData.startFetch()) {
             if (fetchData.onComplete()) {
                 val result = fetchData.result
@@ -110,11 +111,11 @@ class ActivitySpList : AppCompatActivity() {
                     val data = JSONObject(result)
                     val dataArray = data.getJSONArray("data")
                     for (i in 0 until dataArray.length()) {
-                        val newdata = Sp(
-                            dataArray.getJSONObject(i).getString("kode_nota"),
+                        val newdata = Retur(
+                            dataArray.getJSONObject(i).getString("id_retur"),
                             dataArray.getJSONObject(i).getString("perusahaan"),
-                            dataArray.getJSONObject(i).getString("tgl_invoice"),
-                            dataArray.getJSONObject(i).getString("nominal"),
+                            dataArray.getJSONObject(i).getString("no_retur"),
+                            dataArray.getJSONObject(i).getString("create_date"),
                             dataArray.getJSONObject(i).getString("status")
                         )
                         dataArrayList.add(newdata)
@@ -124,9 +125,9 @@ class ActivitySpList : AppCompatActivity() {
         }
     }
 
-    private fun searchSp() {
+    private fun searchRetur() {
         dataArrayList = ArrayList()
-        val fetchData = FetchData(ApiSales.SP + "?perusahaan=" + namaList.text.toString())
+        val fetchData = FetchData(ApiStaff.RETUR + "?perusahaan=" + namaList.text.toString())
         if (fetchData.startFetch()) {
             if (fetchData.onComplete()) {
                 val result = fetchData.result
@@ -134,11 +135,11 @@ class ActivitySpList : AppCompatActivity() {
                     val data = JSONObject(result)
                     val dataArray = data.getJSONArray("data")
                     for (i in 0 until dataArray.length()) {
-                        val newdata = Sp(
-                            dataArray.getJSONObject(i).getString("kode_nota"),
+                        val newdata = Retur(
+                            dataArray.getJSONObject(i).getString("id_retur"),
                             dataArray.getJSONObject(i).getString("perusahaan"),
-                            dataArray.getJSONObject(i).getString("tgl_invoice"),
-                            dataArray.getJSONObject(i).getString("nominal"),
+                            dataArray.getJSONObject(i).getString("no_retur"),
+                            dataArray.getJSONObject(i).getString("create_date"),
                             dataArray.getJSONObject(i).getString("status")
                         )
                         dataArrayList.add(newdata)
@@ -149,7 +150,7 @@ class ActivitySpList : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this@ActivitySpList, ActivityBeranda::class.java))
+        startActivity(Intent(this@ActivityReturList, ActivityBeranda::class.java))
         finish()
     }
 }

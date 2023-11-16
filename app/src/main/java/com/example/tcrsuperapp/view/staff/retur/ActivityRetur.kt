@@ -86,6 +86,11 @@ class ActivityRetur : AppCompatActivity() {
                             Dexter.withContext(applicationContext).withPermission(Manifest.permission.CAMERA)
                                 .withListener(object : PermissionListener {
                                     override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse?) {
+                                        val editor = SP1.edit()
+                                        editor.putString("perusahaan", "")
+                                        editor.putString("alamat", "")
+                                        editor.apply()
+
                                         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                                         startActivityForResult(intent, 111)
                                     }
@@ -161,7 +166,7 @@ class ActivityRetur : AppCompatActivity() {
                 map["create_by"] = SP.getString("username", "").toString()
                 map["create_date"] = formatDate.format(Date()).toString()
                 map["keterangan"] = ketRetur.text.toString()
-                map["status"] = "Diproses"
+                map["status"] = "DIPROSES"
                 return map
             }
         }

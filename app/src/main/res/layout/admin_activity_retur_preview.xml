@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".view.admin.retur.ActivityReturPreview">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/backPreview"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_kembali"/>
+
+            <TextView
+                android:id="@+id/laybarPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"
+                android:text="Preview"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imgPreview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitStart"/>
+</LinearLayout>

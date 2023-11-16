@@ -2,11 +2,13 @@ package com.example.tcrsuperapp.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcrsuperapp.R
 import com.example.tcrsuperapp.model.Retur
@@ -37,16 +39,26 @@ class AdapterRetur(dataList: ArrayList<Retur>?): RecyclerView.Adapter<AdapterRet
         holder.viewHolder.setOnClickListener { v ->
             SP = v.context.getSharedPreferences("Pengguna", Context.MODE_PRIVATE)
             if(SP.getString("level", "").toString() == "Admin") {
-
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.admin.retur.ActivityReturDetail::class.java)
+                intent.putExtra("kode", dataList[position].id_retur)
+                intent.putExtra("status", dataList[position].status)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
             } else if(SP.getString("level", "").toString() == "Staff") {
-//                val intent = Intent(v.context,
-//                    com.example.tcrsuperapp.view.staff.retur.ActivityReturDetail::class.java)
-//                intent.putExtra("kode", dataList[position].kode_nota)
-//                intent.putExtra("status", dataList[position].status)
-//                v.context.startActivity(intent)
-//                (v.context as AppCompatActivity).finish()
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.staff.retur.ActivityReturDetail::class.java)
+                intent.putExtra("kode", dataList[position].id_retur)
+                intent.putExtra("status", dataList[position].status)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
             } else {
-
+                val intent = Intent(v.context,
+                    com.example.tcrsuperapp.view.sales.retur.ActivityReturDetail::class.java)
+                intent.putExtra("kode", dataList[position].id_retur)
+                intent.putExtra("status", dataList[position].status)
+                v.context.startActivity(intent)
+                (v.context as AppCompatActivity).finish()
             }
         }
     }

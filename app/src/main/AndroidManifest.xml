@@ -38,6 +38,30 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".view.sales.retur.ActivityReturPreview"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.retur.ActivityReturDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.retur.ActivityReturList"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.retur.ActivityReturPreview"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.retur.ActivityReturDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.retur.ActivityReturList"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.retur.ActivityReturPreview"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.retur.ActivityReturDetail"
+            android:exported="false" />
+        <activity
             android:name=".view.staff.retur.ActivityReturCust"
             android:exported="false" />
         <activity

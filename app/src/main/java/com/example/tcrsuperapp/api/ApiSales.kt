@@ -15,6 +15,8 @@ class ApiSales {
         val OMZET = SERVER + "omzet.php"
         val OMZET_TOTAL = SERVER + "omzet_total.php"
         val PENGGUNA = SERVER + "pengguna.php"
+        val RETUR = SERVER + "retur.php"
+        val RETUR_DETAIL = SERVER + "retur_detail.php"
         val SP = SERVER + "sp.php"
         val SP_DETAIL = SERVER + "sp_detail.php"
         val STOK = SERVER + "stok.php"

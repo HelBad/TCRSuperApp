@@ -57,12 +57,6 @@ class ActivitySpDetail : AppCompatActivity() {
                 })
                 .setPositiveButton("YA", object: DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface, id:Int) {
-                        Toast.makeText(this@ActivitySpDetail, "kode_nota : " + fpDetail.text.toString(), Toast.LENGTH_SHORT).show()
-                        Toast.makeText(this@ActivitySpDetail, "tgl_kembali : " + tglnotaDetail.text.toString(), Toast.LENGTH_SHORT).show()
-                        Toast.makeText(this@ActivitySpDetail, "keterangan : " + keteranganDetail.text.toString(), Toast.LENGTH_SHORT).show()
-                        Toast.makeText(this@ActivitySpDetail, "kolektor : " + dataSp[0], Toast.LENGTH_SHORT).show()
-                        Toast.makeText(this@ActivitySpDetail, "status : DIBATALKAN", Toast.LENGTH_SHORT).show()
-
                         batalSp()
                     }
                 })

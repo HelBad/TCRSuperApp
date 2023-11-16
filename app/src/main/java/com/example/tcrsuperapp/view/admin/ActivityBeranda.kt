@@ -25,8 +25,10 @@ import com.example.tcrsuperapp.view.admin.omzet.ActivityOmzet
 import com.example.tcrsuperapp.view.admin.stok.ActivityStok
 import com.example.tcrsuperapp.view.admin.survey.ActivitySurveyList
 import com.example.tcrsuperapp.view.admin.sp.ActivitySpList
+import com.example.tcrsuperapp.view.admin.retur.ActivityReturList
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
 import kotlinx.android.synthetic.main.admin_activity_beranda.*
+import kotlinx.android.synthetic.main.staff_activity_beranda.returBeranda
 import org.json.JSONObject
 
 class ActivityBeranda : AppCompatActivity() {
@@ -67,6 +69,10 @@ class ActivityBeranda : AppCompatActivity() {
         }
         fblBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityFbl::class.java))
+            finish()
+        }
+        returBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityReturList::class.java))
             finish()
         }
         salesBeranda.setOnClickListener {

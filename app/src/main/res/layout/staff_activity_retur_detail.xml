@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".view.staff.sp.ActivitySpDetail">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/backDetail"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_kembali"/>
+
+            <TextView
+                android:id="@+id/laybarDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"
+                android:text="Retur Penjualan"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layBtn"
+        android:layout_below="@+id/toolbarDetail"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layNama"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Customer"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/namaDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layAlamat"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/alamatDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layFotobrg"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Foto Barang"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/fotobrgDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Lihat Preview Gambar"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layCreateby"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Create By"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/createbyDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layCreatedate"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Create Date"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/createdateDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layNoretur"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nomor Retur"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/noreturDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:hint="Masukkan No. Retur"
+                        android:inputType="textCapCharacters"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layKoderetur"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kode Nota Retur"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/kodereturDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:hint="Masukkan Kode Retur"
+                        android:inputType="textCapCharacters"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layPiutang"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kode Piutang"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/piutangDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:hint="Masukkan Kode Piutang"
+                        android:inputType="textCapCharacters"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layFotonota"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Foto Nota Retur"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/fotonotaDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Lihat Preview Gambar"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layTglsetuju"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Disetujui"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/tglsetujuDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layKet"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Keterangan"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/ketDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:hint="Masukkan Keterangan"
+                        android:inputType="textCapCharacters"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layKolektor"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Kolektor"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/kolektorDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layStatus"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status Retur"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/statusDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:editable="false"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/btnBatal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/dec_button"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:text="DIBATALKAN"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnSimpan"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/dec_button"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:text="SIMPAN DATA"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

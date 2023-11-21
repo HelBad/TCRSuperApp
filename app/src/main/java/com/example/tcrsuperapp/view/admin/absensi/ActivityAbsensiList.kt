@@ -76,19 +76,19 @@ class ActivityAbsensiList : AppCompatActivity() {
 
         menungguList.setOnClickListener {
             val intent = Intent(this@ActivityAbsensiList, ActivityAbsensiList::class.java)
-            intent.putExtra("approval", "Menunggu")
+            intent.putExtra("approval", "MENUNGGU")
             startActivity(intent)
             finish()
         }
         setujuList.setOnClickListener {
             val intent = Intent(this@ActivityAbsensiList, ActivityAbsensiList::class.java)
-            intent.putExtra("approval", "Disetujui")
+            intent.putExtra("approval", "DISETUJUI")
             startActivity(intent)
             finish()
         }
         tolakList.setOnClickListener {
             val intent = Intent(this@ActivityAbsensiList, ActivityAbsensiList::class.java)
-            intent.putExtra("approval", "Ditolak")
+            intent.putExtra("approval", "DITOLAK")
             startActivity(intent)
             finish()
         }
@@ -100,21 +100,21 @@ class ActivityAbsensiList : AppCompatActivity() {
             laybarList3.visibility = View.VISIBLE
             tglList.text = ""
 
-            if(intent.getStringExtra("approval").toString() == "Menunggu") {
-                loadAbsensi()
-                menungguList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
-                setujuList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-                tolakList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            } else if(intent.getStringExtra("approval").toString() == "Disetujui") {
+            if(intent.getStringExtra("approval").toString() == "DISETUJUI") {
                 loadAbsensi()
                 menungguList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
                 setujuList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
                 tolakList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            } else {
+            } else if(intent.getStringExtra("approval").toString() == "DITOLAK") {
                 loadAbsensi()
                 menungguList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
                 setujuList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
                 tolakList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            } else {
+                loadAbsensi()
+                menungguList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+                setujuList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+                tolakList.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
             }
         } else {
             laybarList3.visibility = View.GONE

@@ -284,6 +284,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:hint="Masukkan Catatan"
+                                android:inputType="textCapCharacters"
                                 android:textColor="@android:color/black"
                                 android:textSize="15dp"
                                 android:textStyle="bold" />

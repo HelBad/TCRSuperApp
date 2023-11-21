@@ -19,6 +19,7 @@ import com.example.tcrsuperapp.view.staff.bukuharian.ActivityBukuharian
 import com.example.tcrsuperapp.view.staff.customer.ActivityCustomer
 import com.example.tcrsuperapp.view.staff.fbl.ActivityFbl
 import com.example.tcrsuperapp.view.staff.galery.ActivityGalery
+import com.example.tcrsuperapp.view.staff.izin.ActivityIzinList
 import com.example.tcrsuperapp.view.staff.masukan.ActivityMasukan
 import com.example.tcrsuperapp.view.staff.retur.ActivityReturList
 import com.example.tcrsuperapp.view.staff.sp.ActivitySpList
@@ -50,6 +51,10 @@ class ActivityBeranda : AppCompatActivity() {
         }
         stokBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityStok::class.java))
+            finish()
+        }
+        izinBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityIzinList::class.java))
             finish()
         }
         custBeranda.setOnClickListener {

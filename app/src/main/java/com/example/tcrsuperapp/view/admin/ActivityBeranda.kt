@@ -26,8 +26,10 @@ import com.example.tcrsuperapp.view.admin.stok.ActivityStok
 import com.example.tcrsuperapp.view.admin.survey.ActivitySurveyList
 import com.example.tcrsuperapp.view.admin.sp.ActivitySpList
 import com.example.tcrsuperapp.view.admin.retur.ActivityReturList
+import com.example.tcrsuperapp.view.admin.izin.ActivityIzinList
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
 import kotlinx.android.synthetic.main.admin_activity_beranda.*
+import kotlinx.android.synthetic.main.staff_activity_beranda.izinBeranda
 import kotlinx.android.synthetic.main.staff_activity_beranda.returBeranda
 import org.json.JSONObject
 
@@ -49,6 +51,10 @@ class ActivityBeranda : AppCompatActivity() {
             val intent = Intent(this@ActivityBeranda, ActivityAbsensiList::class.java)
             intent.putExtra("approval", "Menunggu")
             startActivity(intent)
+            finish()
+        }
+        izinBeranda.setOnClickListener {
+            startActivity(Intent(this@ActivityBeranda, ActivityIzinList::class.java))
             finish()
         }
         stokBeranda.setOnClickListener {

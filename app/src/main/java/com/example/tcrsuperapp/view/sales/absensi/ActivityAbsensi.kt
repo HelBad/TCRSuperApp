@@ -68,7 +68,7 @@ class ActivityAbsensi : AppCompatActivity() {
 
         backAbsensi.setOnClickListener {
             val intent = Intent(this@ActivityAbsensi, ActivityAbsensiList::class.java)
-            intent.putExtra("approval", "Menunggu")
+            intent.putExtra("approval", "MENUNGGU")
             startActivity(intent)
             finish()
         }
@@ -243,7 +243,7 @@ class ActivityAbsensi : AppCompatActivity() {
                 map["catatan"] = ketAbsensi.text.toString()
                 map["status"] = kode[3]
                 map["foto"] = encodedimage
-                map["approval"] = "Menunggu"
+                map["approval"] = "MENUNGGU"
                 return map
             }
         }
@@ -253,7 +253,7 @@ class ActivityAbsensi : AppCompatActivity() {
 
     override fun onBackPressed() {
         val intent = Intent(this@ActivityAbsensi, ActivityAbsensiList::class.java)
-        intent.putExtra("approval", "Menunggu")
+        intent.putExtra("approval", "MENUNGGU")
         startActivity(intent)
         finish()
     }

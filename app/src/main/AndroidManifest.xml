@@ -38,6 +38,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".view.admin.izin.ActivityIzinDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.izin.ActivityIzin"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.izin.ActivityIzinList"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.izin.ActivityIzinDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.izin.ActivityIzin"
+            android:exported="false" />
+        <activity
+            android:name=".view.staff.izin.ActivityIzinList"
+            android:exported="false" />
+        <activity
             android:name=".view.sales.retur.ActivityReturPreview"
             android:exported="false" />
         <activity

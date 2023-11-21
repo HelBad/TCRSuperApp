@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.staff_activity_retur.*
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
+import java.util.ArrayList
 import java.util.Date
 import java.util.HashMap
 
@@ -38,7 +39,8 @@ class ActivityRetur : AppCompatActivity() {
     lateinit var bitmap: Bitmap
     lateinit var encodedimage: String
     var formatDate = SimpleDateFormat("YYYY-MM-dd HH:mm:ss")
-    var kode = ""
+    var formatY = SimpleDateFormat("YY")
+    var kode: ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +49,7 @@ class ActivityRetur : AppCompatActivity() {
         alertDialog = AlertDialog.Builder(this)
         SP = getSharedPreferences("Pengguna", Context.MODE_PRIVATE)
         SP1 = getSharedPreferences("Retur", Context.MODE_PRIVATE)
+        kode = arrayListOf("", "")
         getData()
 
         custRetur.setOnClickListener {
@@ -129,10 +132,13 @@ class ActivityRetur : AppCompatActivity() {
                 try {
                     val data = JSONObject(result)
                     val dataObject = data.getJSONObject("data")
-                    kode = "R" + String.format("%04d", dataObject.getString("COUNT(*)").toInt() + 1)
+                    kode[0] = String.format("%04d", dataObject.getString("COUNT(*)").toInt() + 1)
                 } catch (t: Throwable) { }
             }
         }
+
+        kode[1] = SP.getString("username", "").toString() + "/RP/" +
+                formatY.format(Date()).toString() + "/" + kode[0]
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -160,7 +166,7 @@ class ActivityRetur : AppCompatActivity() {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String?> {
                 val map: HashMap<String, String> = HashMap()
-                map["id_retur"] = kode
+                map["id_retur"] = kode[1]
                 map["cust"] = SP1.getString("kode", "").toString()
                 map["img_brg"] = encodedimage
                 map["create_by"] = SP.getString("username", "").toString()

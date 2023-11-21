@@ -45,7 +45,7 @@ class ActivityAbsensiDetail : AppCompatActivity() {
                 })
                 .setPositiveButton("YA", object: DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface, id:Int) {
-                        kode[2] = "Disetujui"
+                        kode[2] = "DISETUJUI"
                         approvalAbsensi()
                     }
                 })
@@ -63,7 +63,7 @@ class ActivityAbsensiDetail : AppCompatActivity() {
                 })
                 .setPositiveButton("YA", object: DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface, id:Int) {
-                        kode[2] = "Ditolak"
+                        kode[2] = "DITOLAK"
                         approvalAbsensi()
                     }
                 })
@@ -76,7 +76,7 @@ class ActivityAbsensiDetail : AppCompatActivity() {
     }
 
     private fun getApproval() {
-        if(kode[1] == "Menunggu") {
+        if(kode[1] == "MENUNGGU") {
             layDetail.visibility = View.VISIBLE
             getData()
         } else {

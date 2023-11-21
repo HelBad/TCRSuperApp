@@ -148,20 +148,6 @@
                         android:scaleType="fitXY"/>
 
                     <ImageView
-                        android:id="@+id/produkBeranda"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_margin="3dp"
-                        android:src="@drawable/img_surveyproduk"
-                        android:scaleType="fitXY"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
                         android:id="@+id/surveyBeranda"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -169,7 +155,12 @@
                         android:layout_margin="3dp"
                         android:src="@drawable/img_surveycust"
                         android:scaleType="fitXY"/>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <ImageView
                         android:id="@+id/galeryBeranda"
                         android:layout_width="0dp"
@@ -178,12 +169,7 @@
                         android:layout_margin="3dp"
                         android:src="@drawable/img_galery"
                         android:scaleType="fitXY"/>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
                     <ImageView
                         android:id="@+id/masukanBeranda"
                         android:layout_width="0dp"
@@ -192,7 +178,12 @@
                         android:layout_margin="3dp"
                         android:src="@drawable/img_masukan"
                         android:scaleType="fitXY"/>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                     <ImageView
                         android:id="@+id/logoutBeranda"
                         android:layout_width="0dp"
@@ -200,6 +191,13 @@
                         android:layout_weight="1"
                         android:layout_margin="3dp"
                         android:src="@drawable/img_logout"
+                        android:scaleType="fitXY"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"
                         android:scaleType="fitXY"/>
                 </LinearLayout>
             </LinearLayout>

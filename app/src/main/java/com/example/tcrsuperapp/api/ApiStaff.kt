@@ -2,7 +2,8 @@ package com.example.tcrsuperapp.api
 
 class ApiStaff {
     companion object {
-        private val SERVER = "http://10.0.2.2/fuboru_tcr_superapp/staff/"
+//        private val SERVER = "http://10.0.2.2/fuboru_tcr_superapp/staff/"
+        private val SERVER = "http://tcrcorp.id/fuboru_tcr_superapp/staff/"
         val ABSENSI = SERVER + "absensi.php"
         val ABSENSI_ADD = SERVER + "absensi_add.php"
         val ABSENSI_COUNT = SERVER + "absensi_count.php"

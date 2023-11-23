@@ -27,10 +27,10 @@ import com.example.tcrsuperapp.view.admin.survey.ActivitySurveyList
 import com.example.tcrsuperapp.view.admin.sp.ActivitySpList
 import com.example.tcrsuperapp.view.admin.retur.ActivityReturList
 import com.example.tcrsuperapp.view.admin.izin.ActivityIzinList
+import com.example.tcrsuperapp.view.admin.sales.ActivitySalesList
+import com.example.tcrsuperapp.view.admin.sales.ActivitySalesTarget
 import com.vishnusivadas.advanced_httpurlconnection.FetchData
 import kotlinx.android.synthetic.main.admin_activity_beranda.*
-import kotlinx.android.synthetic.main.staff_activity_beranda.izinBeranda
-import kotlinx.android.synthetic.main.staff_activity_beranda.returBeranda
 import org.json.JSONObject
 
 class ActivityBeranda : AppCompatActivity() {
@@ -88,6 +88,25 @@ class ActivityBeranda : AppCompatActivity() {
         omzetBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivityOmzet::class.java))
             finish()
+        }
+        produkBeranda.setOnClickListener {
+            alertDialog.setMessage("Masuk ke menu daftar kunjungan atau menu target kunjungan ?")
+                .setCancelable(false)
+                .setPositiveButton("SURVEY", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {
+                        startActivity(Intent(this@ActivityBeranda, ActivitySalesList::class.java))
+                        finish()
+                    }
+                })
+                .setNeutralButton("TARGET", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {
+                        startActivity(Intent(this@ActivityBeranda, ActivitySalesTarget::class.java))
+                        finish()
+                    }
+                })
+                .setNegativeButton("", object: DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface, id:Int) {}
+                }).create().show()
         }
         surveyBeranda.setOnClickListener {
             startActivity(Intent(this@ActivityBeranda, ActivitySurveyList::class.java))

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".view.admin.survey.ActivitySurveyAkhir">
+    <LinearLayout
+        android:id="@+id/titleAkhir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Terima Kasih"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Setiap laporan anda sangatlah berarti untuk kami dalam meningkatkan Kualitas pelayanan TCR."
+            android:textAlignment="center"
+            android:textColor="@color/colorGrey"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layAkhir"
+        android:layout_below="@id/titleAkhir"
+        android:layout_marginHorizontal="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_maskot" />
+
+    <RelativeLayout
+        android:id="@+id/layAkhir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnAkhir"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="20dp"
+            android:backgroundTint="@color/colorAccent"
+            app:cardCornerRadius="30dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="5dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_rumah"
+                android:backgroundTint="@android:color/white"/>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>

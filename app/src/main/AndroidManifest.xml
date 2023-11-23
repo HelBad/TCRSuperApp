@@ -38,6 +38,45 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".view.sales.sales.ActivitySalesList"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.sales.ActivitySalesDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.sales.ActivitySalesCust"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.sales.ActivitySalesAwal"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.sales.ActivitySalesAkhir"
+            android:exported="false" />
+        <activity
+            android:name=".view.sales.sales.ActivitySales"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.sales.ActivitySalesAkhir"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.sales.ActivitySales"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.sales.ActivitySalesCust"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.sales.ActivitySalesAwal"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.sales.ActivitySalesDetail"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.sales.ActivitySalesList"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.sales.ActivitySalesTarget"
+            android:exported="false" />
+        <activity
             android:name=".view.admin.izin.ActivityIzinDetail"
             android:exported="false" />
         <activity

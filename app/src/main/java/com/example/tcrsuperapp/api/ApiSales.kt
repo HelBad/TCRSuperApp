@@ -2,7 +2,8 @@ package com.example.tcrsuperapp.api
 
 class ApiSales {
     companion object {
-        private val SERVER = "http://10.0.2.2/fuboru_tcr_superapp/sales/"
+//        private val SERVER = "http://10.0.2.2/fuboru_tcr_superapp/sales/"
+        private val SERVER = "http://tcrcorp.id/fuboru_tcr_superapp/sales/"
         val ABSENSI = SERVER + "absensi.php"
         val ABSENSI_ADD = SERVER + "absensi_add.php"
         val ABSENSI_COUNT = SERVER + "absensi_count.php"
@@ -17,6 +18,11 @@ class ApiSales {
         val PENGGUNA = SERVER + "pengguna.php"
         val RETUR = SERVER + "retur.php"
         val RETUR_DETAIL = SERVER + "retur_detail.php"
+        val SALES = SERVER + "sales.php"
+        val SALES_ADD = SERVER + "sales_add.php"
+        val SALES_COUNT = SERVER + "sales_count.php"
+        val SALES_DETAIL = SERVER + "sales_detail.php"
+        val SALES_TARGET_DETAIL = SERVER + "sales_target_detail.php"
         val SP = SERVER + "sp.php"
         val SP_DETAIL = SERVER + "sp_detail.php"
         val STOK = SERVER + "stok.php"
